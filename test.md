@@ -132,10 +132,10 @@
 | $10                  | $10                  | $10             |
 | $1                   | $1                   | $1              |
 
-
 ## 連結
 
 內嵌連結的 Markdown 語法是由超連結文字 [link text] 部分，以及緊接在後面的連結 URL 或檔案名稱 (file-name.md) 部分所組成：
+
 ```連結結構表示
 [Google](https://www.google.com.tw)
 ```
@@ -148,7 +148,6 @@
 
 前三個倒引號 ('`') 字元之後的別名定義要使用的語法醒目提示。
 
-
 `` ``` ``alias  
 your code goes in here.  
 `` ``` ``  
@@ -159,3 +158,8 @@ your code goes in here.
 我是程式碼展示區
 ```
 
+## 參考連結  
+
+[微軟教學-如何使用 Markdown 來撰寫 Docs](https://docs.microsoft.com/zh-tw/contribute/how-to-write-use-markdown)
+
+[適用於 VS Code 的 Docs 編寫套件](https://docs.microsoft.com/zh-tw/contribute/how-to-write-docs-auth-pack)
