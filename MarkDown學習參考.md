@@ -148,10 +148,10 @@
 
 前三個倒引號 ('`') 字元之後的別名定義要使用的語法醒目提示。
 
-```程式碼片段
-```名稱
-你的code填寫區
-```結束也要三個反單
+```md
+```你的名稱
+ 我是程式碼展示區
+```結束也要三個反單引號
 ```
 
 區塊裡再塞區塊好像無法正常包覆進去,所以暫時先這樣子寫了，示意而已  
@@ -166,3 +166,12 @@
 [微軟教學-如何使用 Markdown 來撰寫 Docs](https://docs.microsoft.com/zh-tw/contribute/how-to-write-use-markdown)
 
 [適用於 VS Code 的 Docs 編寫套件](https://docs.microsoft.com/zh-tw/contribute/how-to-write-docs-auth-pack)
+
+### 套件快速鍵說明  
+
+- docs-markdown **這一套蠻便利的所以稍微提一下**，剩餘看微軟官方連結還有幾套輔助工具也都可以安裝，特別講這一套是因為有快速鍵，可以讓你快速插入md
+
+  1. Docs Markdown menu, type **ALT+M**.  
+  2. Hit **F1** to open the command,and palette and start typing to filter. All the Docs commands begin with "**Docs**".  
+
+## 還有很多功能沒有說明，等之後測試到了再寫了  
