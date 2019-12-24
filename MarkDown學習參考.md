@@ -15,25 +15,48 @@
 例如，# Async Programming in F# #。  
 第二級標題將產生頁面上的 TOC，顯示在頁面標題下方的「本文中」區段中。
 
+更鮮明寫法
+
+```alt
+Alt-H1 也就是在文字下面用6個等號
+======
+Alt-H2 也就是在文字下面用6個減號，這顯示下面還會多一條線，有點類似 ##
+------
+```
+
+Alt-H1：文字測試效果1  
+======  
+
+Alt-H2：文字測試效果2  
+------  
+
 ## 粗體與斜體文字
 
 ```粗體
-**bold**
+**bold** 或 __bold__
 ```
 
-粗體要2個*：**bold**
+粗體要2個*：**bold雙星號** ，__bold雙底線__
 
 ```斜體
-*italic*
+*italic* 或 _italic_
 ```
 
-斜體用1個*：*italic*  
+斜體用1個*：*italic星號* ， _italic底線_
 
 ```粗體加斜體
-***bold and italic***
+***bold and italic*** 或 **asterisks and _underscores_**
 ```
 
-粗體加上斜體要用三個*：***bold and italic***  
+粗體加上斜體要用三個*：***bold and italic***  ，**asterisks and _underscores_**
+
+```刪除線
+~~Scratch this.~~ 雙蚯蚓
+```
+
+刪除線：~~Scratch this.~~
+
+
 
 ## 區塊引述
 
@@ -52,6 +75,7 @@
 - List item 1
 - List item 2
 - List item 3
+(+)(-)(*) 三個符號都可以做成無序號清單，會比較建議用 - (減號)
 ```  
 
 結果如下：  
@@ -82,8 +106,8 @@
 
 ```排序清單
 1. First instruction
-1. Second instruction
-1. Third instruction
+2. Second instruction
+3. Third instruction
 ```  
 
 結果如下：
@@ -110,9 +134,9 @@
 
 ## 表格
 
-(|) 表示垂直線  
-(-) 建立每一欄的標頭，要顯示多寬也是用這個增減  
-(:) 擺放位置表示靠左、靠右、置中(左右各一組冒號)  
+( | ) 表示垂直線  
+( - ) 建立每一欄的標頭，要顯示多寬也是用這個增減  
+( : ) 擺放位置表示靠左、靠右、置中(左右各一組冒號)  
 
 ```表格
 | Fun                  | With                 | Tables          |
@@ -161,6 +185,17 @@
 我是程式碼展示區
 ```
 
+## 註腳 Footnotes 
+
+```show註腳
+Text prior to footnote reference.[^註1]
+[^註1] Comment to include in footnote.
+```
+
+Text prior to footnote reference.[^註1]
+
+[^註1] Comment to include in footnote.
+
 ## 參考連結  
 
 [微軟教學-如何使用 Markdown 來撰寫 Docs](https://docs.microsoft.com/zh-tw/contribute/how-to-write-use-markdown)
@@ -175,3 +210,5 @@
   2. Hit **F1** to open the command,and palette and start typing to filter. All the Docs commands begin with "**Docs**".  
 
 ## 還有很多功能沒有說明，等之後測試到了再寫了  
+
+
