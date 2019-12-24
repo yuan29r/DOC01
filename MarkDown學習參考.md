@@ -192,9 +192,9 @@ Text prior to footnote reference.[^註1]
 [^註1] Comment to include in footnote.
 ```
 
-Text prior to footnote reference.[^註1]
+Text prior to footnote reference.[^1]
 
-[^註1] Comment to include in footnote.
+[^1] Comment to include in footnote.
 
 ## 參考連結  
 
