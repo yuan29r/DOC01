@@ -185,17 +185,6 @@ Alt-H2：文字測試效果2
 我是程式碼展示區
 ```
 
-## 註腳 Footnotes 
-
-```show註腳
-Text prior to footnote reference.[^註1]
-[^註1] Comment to include in footnote.
-```
-
-Text prior to footnote reference.[^1]
-
-[^1] Comment to include in footnote.
-
 ## 參考連結  
 
 [微軟教學-如何使用 Markdown 來撰寫 Docs](https://docs.microsoft.com/zh-tw/contribute/how-to-write-use-markdown)
