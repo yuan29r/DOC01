@@ -41,3 +41,28 @@ ng serve --open
 
 ng serve當您更改這些文件時，該命令將啟動服務器，監視您的文件並重建應用程序。  
 該--open（或只是-o）選項會自動打開你的瀏覽器 http://localhost:4200/
+
+## 雙向資料繫結語法[(ngModel)]
+
+[(ngModel)] 是 Angular 的雙向資料繫結語法。
+
+```ngModel
+ <input [(ngModel)]="hero.name" placeholder="name"/>
+```
+
+[(ngModel)] 使用需要加入模組，不然會出現錯
+
+- 須在AppModule.ts加入 import { FormsModule } from '@angular/forms';
+  
+- 且@NgModule imports 理也要加入 FormsModule
+
+ ```AppModule
+ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
+ @NgModule({
+    imports: [
+        BrowserModule,
+        FormsModule     <-- NgModel lives here
+        ]
+ })
+ ```
