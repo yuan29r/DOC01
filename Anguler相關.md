@@ -36,33 +36,58 @@ ng build --prod
 
 ```serve
 cd 專案資料夾
-ng serve --open
+ng serve --open 或 ng serve -o
 ```  
 
-ng serve當您更改這些文件時，該命令將啟動服務器，監視您的文件並重建應用程序。  
-該--open（或只是-o）選項會自動打開你的瀏覽器 http://localhost:4200/
+## 繫結語法：概覽
 
-## 雙向資料繫結語法[(ngModel)]
+繫結的型別可以根據資料流的方向分成三類： 從資料來源到檢視、從檢視到資料來源以及雙向的從檢視到資料來源再到檢視。
 
-[(ngModel)] 是 Angular 的雙向資料繫結語法。
+| 資料方向 ( Data direction )  | 語法 ( Syntax )   | 繫結型別 ( Type )     |
+| :---------------------------------- | :------------------- |:---------------|
+| 單向 One-way</br>從資料來源 from data source</br>到檢視 to view target | {{expression}}</br>[target]="expression"</br>bind-target="expression" | 插值 [Interpolation]</br>屬性 [Property]</br>屬性 [Attribute]</br>CSS 類 [Class]</br>樣式 [Style] |
+| 從檢視到資料來源的單向繫結</br>One-way from view target to data source | (target)="statement"</br>on-target="statement"                 | 事件 [Event] |
+| 雙向 </br>Two-way                  | [(target)]="expression"</br>bindon-target="expression"                  | 雙向 [Two-way]  |
 
-```ngModel
- <input [(ngModel)]="hero.name" placeholder="name"/>
-```
+譯註：由於 HTML attribute 和 DOM property 在中文中都被翻譯成了“屬性”，無法區分。
 
-[(ngModel)] 使用需要加入模組，不然會出現錯
+**除了插值之外的繫結型別，在等號左邊是目標名， 無論是包在括號中 ([]、()) 還是用字首形式 (bind-、on-、bindon-) 。**
 
-- 須在AppModule.ts加入 import { FormsModule } from '@angular/forms';
-  
-- 且@NgModule imports 理也要加入 FormsModule
+### HTML attribute 與 DOM property 的對比
 
- ```AppModule
- import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+要想理解 Angular 繫結如何工作，重點是搞清 HTML attribute 和 DOM property 之間的區別。  
 
- @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule     <-- NgModel lives here
-        ]
- })
- ```
+attribute 是由 HTML 定義的。property 是由 DOM (Document Object Model) 定義的。
+
+- 少量 HTML attribute 和 property 之間有著 1:1 的對映，如 id。
+- 有些 HTML attribute 沒有對應的 property，如 colspan。  
+- 有些 DOM property 沒有對應的 attribute，如 textContent。  
+- 大量 HTML attribute 看起來對映到了 property…… 但卻不像你想的那樣！  
+
+最後一類尤其讓人困惑…… 除非你能理解這個普遍原則：  
+attribute 初始化 DOM property，然後它們的任務就完成了。property 的值可以改變；attribute 的值不能改變。  
+例如，當瀏覽器渲染 ```<input type="text" value="Bob">``` 時，它將建立相應 DOM 節點， 它的 value 這個 property 被初始化為 “Bob”。
+
+當用戶在輸入框中輸入 “Sally” 時，DOM 元素的 value 這個 property 變成了 “Sally”。 但是該 HTML 的 value 這個 attribute 保持不變。如果你讀取 input 元素的 attribute，就會發現確實沒變： input.getAttribute('value') // 返回 "Bob"。
+HTML 的 value 這個 attribute 指定了初始值；DOM 的 value 這個 property 是當前值。
+
+disabled 這個 attribute 是另一種特例。按鈕的 disabled 這個 property 是 false，因為預設情況下按鈕是可用的。 當你新增 disabled 這個 attribute 時，只要它出現了按鈕的 disabled 這個 property 就初始化為 true，於是按鈕就被禁用了。
+
+新增或刪除 disabled 這個 attribute 會禁用或啟用這個按鈕。但 attribute 的值無關緊要，這就是你為什麼沒法透過 ```<button disabled="false">仍被禁用</button>``` 這種寫法來啟用按鈕。  
+
+設定按鈕的 disabled 這個 property（如，透過 Angular 繫結）可以禁用或啟用這個按鈕。這就是 property 的價值。  
+
+就算名字相同，HTML attribute 和 DOM property 也不是同一樣東西。
+
+***在 Angular 的世界中，attribute 唯一的作用是用來初始化元素和指令的狀態。 當進行資料繫結時，只是在與元素和指令的 property 和事件打交道，而 attribute 就完全靠邊站了。***
+
+## 繫結目標
+
+| 繫結型別 type                  | 目標 target            | 範例          |
+| :------------------- | :------------------- |:---------------|
+| 屬性</br>Property  | 元素的 property</br>元件的 property</br>指令的 property | \<img [src]="heroImageUrl"></br>\<app-hero-detail [hero]="currentHero"><\/app-hero-detail></br>\<div [ngClass]="{'special': isSpecial}"><\/div> |
+| 事件</br>Event                | 元素的事件Element event</br>元件的事件Component event</br>指令的事件Directive event   | \<button (click)="onSave()">Save<\/button></br>\<app-hero-detail (deleteRequest)="deleteHero()"><\/app-hero-detail></br>\<div (myClick)="clicked=$event" clickable>click me<\/div>            |
+| 雙向          | 事件與 property    | \<input [(ngModel)]="name">    |
+| Attribute     | attribute（例外情況）| \<button [attr.aria-label]="help">help<\/button>  |
+| CSS 類        | class property      | \<div [class.special]="isSpecial">Special<\/div>              |
+| 樣式          | style property      | \<button [style.color]="isSpecial ? 'red' : 'green'">         |
