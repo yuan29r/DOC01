@@ -45,7 +45,7 @@ ng serve --open 或 ng serve -o
 
 | 資料方向 ( Data direction )  | 語法 ( Syntax )   | 繫結型別 ( Type )     |
 | :---------------------------------- | :------------------- |:---------------|
-| 單向 One-way</br>從資料來源 from data source</br>到檢視 to view target | {{expression}}</br>[target]="expression"</br>bind-target="expression" | 插值 [Interpolation]</br>屬性 [Property]</br>屬性 [Attribute]</br>CSS 類 [Class]</br>樣式 [Style] |
+| 單向 One-way</br>從資料來源到檢視 </br>from data source to view target | {{expression}}</br>[target]="expression"</br>bind-target="expression" | 插值 [Interpolation]</br>屬性 [Property]</br>屬性 [Attribute]</br>CSS 類 [Class]</br>樣式 [Style] |
 | 從檢視到資料來源的單向繫結</br>One-way from view target to data source | (target)="statement"</br>on-target="statement"                 | 事件 [Event] |
 | 雙向 </br>Two-way                  | [(target)]="expression"</br>bindon-target="expression"                  | 雙向 [Two-way]  |
 
@@ -91,3 +91,18 @@ disabled 這個 attribute 是另一種特例。按鈕的 disabled 這個 propert
 | Attribute     | attribute（例外情況）| \<button [attr.aria-label]="help">help<\/button>  |
 | CSS 類        | class property      | \<div [class.special]="isSpecial">Special<\/div>              |
 | 樣式          | style property      | \<button [style.color]="isSpecial ? 'red' : 'green'">         |
+
+## 生命週期的順序
+
+當 Angular 使用建構函式新建一個元件或指令後，就會按下面的順序在特定時刻呼叫這些生命週期鉤子方法：
+
+| 鉤子 Hook            | 用途及時機 Purpose and Timing                |
+| :------------------- | :------------------- |
+| ngOnChanges()  | 當 Angular（重新）設定資料繫結輸入屬性時響應。 該方法接受當前和上一屬性值的 SimpleChanges 物件</br>在 ngOnInit() 之前以及所繫結的一個或多個輸入屬性的值發生變化時都會呼叫。 |
+| ngOnInit()                 | 在 Angular 第一次顯示資料繫結和設定指令/元件的輸入屬性之後，初始化指令/元件。</br>在第一輪 ngOnChanges() 完成之後呼叫，只調用一次。                 |
+| ngDoCheck()                  | 檢測，並在發生 Angular 無法或不願意自己檢測的變化時作出反應。</br>在每個變更檢測週期中，緊跟在 ngOnChanges() 和 ngOnInit() 後面呼叫。                 |
+| ngAfterContentInit()         | 當 Angular 把外部內容投影進元件/指令的檢視之後呼叫。</br>第一次 ngDoCheck() 之後呼叫，只調用一次。                   |
+| ngAfterContentChecked()      | 每當 Angular 完成被投影元件內容的變更檢測之後呼叫。</br>ngAfterContentInit() 和每次 ngDoCheck() 之後呼叫                  |
+| ngAfterViewInit()            | 當 Angular 初始化完元件檢視及其子檢視之後呼叫。</br>第一次 ngAfterContentChecked() 之後呼叫，只調用一次。                   |
+| ngAfterViewChecked()         | 每當 Angular 做完元件檢視和子檢視的變更檢測之後呼叫。</br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之後呼叫。                 |
+| ngOnDestroy()                | 每當 Angular 每次銷毀指令/元件之前呼叫並清掃。 在這兒反訂閱可觀察物件和分離事件處理器，以防記憶體洩漏。</br>在 Angular 銷毀指令/元件之前呼叫。                   |
