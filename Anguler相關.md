@@ -106,3 +106,19 @@ disabled 這個 attribute 是另一種特例。按鈕的 disabled 這個 propert
 | ngAfterViewInit()            | 當 Angular 初始化完元件檢視及其子檢視之後呼叫。</br>第一次 ngAfterContentChecked() 之後呼叫，只調用一次。                   |
 | ngAfterViewChecked()         | 每當 Angular 做完元件檢視和子檢視的變更檢測之後呼叫。</br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之後呼叫。                 |
 | ngOnDestroy()                | 每當 Angular 每次銷毀指令/元件之前呼叫並清掃。 在這兒反訂閱可觀察物件和分離事件處理器，以防記憶體洩漏。</br>在 Angular 銷毀指令/元件之前呼叫。                   |
+
+## 元件之間的互動
+
+### @Input
+
+如果有出現 "the directive input property should not be renamed" 類似訊息時，可以用兩種方式讓這個訊息不提示。
+
+```input關閉錯誤提醒
+方法一：
+tslint.json檔案，關閉規則
+"no-input-rename": false
+
+方法二：
+// lint:disable-next-line:no-input-rename
+@Input('appAvatarColor') name: string;
+```
