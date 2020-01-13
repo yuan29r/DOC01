@@ -147,3 +147,9 @@ tslint.json檔案，關閉規則
 子元件的 EventEmitter 屬性是一個輸出屬性，通常帶有@Output 裝飾器，就像在 VoterComponent 中看到的。
 
 ![emit圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/emit01.jpg "emit圖解說明")
+
+### 父元件與子元件透過本地變數互動
+
+父元件不能使用資料繫結來讀取子元件的屬性或呼叫子元件的方法。但可以在父元件範本裡，新建一個本地變數來代表子元件，然後利用這個變數來讀取子元件的屬性和呼叫子元件的方法
+
+![child-via-local-variable01圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/child-via-local-variable01.jpg "child-via-local-variable01圖解說明")
