@@ -165,3 +165,15 @@ tslint.json檔案，關閉規則
 由本地變數切換到 ViewChild 技術的唯一目的就是做示範。
 
 ![Viewchild圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/Viewchild01.jpg "Viewchild圖解說明")
+
+### 父元件和子元件透過服務來通訊
+
+父元件和它的子元件共享同一個服務，利用該服務在元件家族內部實現雙向通訊。
+
+該服務例項的作用域被限制在父元件和其子元件內。這個元件子樹之外的元件將無法訪問該服務或者與它們通訊。
+
+這個 MissionService 把 MissionControlComponent 和多個 AstronautComponent 子元件連線起來。
+
+MissionControlComponent 提供服務的例項，並將其共享給它的子元件(透過 providers 元資料陣列)，子元件可以透過建構函式將該例項注入到自身。
+
+![service injectable圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/injectable.jpg "service injectable圖解說明")
