@@ -176,4 +176,4 @@ tslint.json檔案，關閉規則
 
 MissionControlComponent 提供服務的例項，並將其共享給它的子元件(透過 providers 元資料陣列)，子元件可以透過建構函式將該例項注入到自身。
 
-![service injectable圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/injectable.jpg "service injectable圖解說明")
+![service injectable圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/injectable01.jpg "service injectable圖解說明")
