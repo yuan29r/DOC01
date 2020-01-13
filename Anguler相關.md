@@ -153,3 +153,15 @@ tslint.json檔案，關閉規則
 父元件不能使用資料繫結來讀取子元件的屬性或呼叫子元件的方法。但可以在父元件範本裡，新建一個本地變數來代表子元件，然後利用這個變數來讀取子元件的屬性和呼叫子元件的方法
 
 ![child-via-local-variable01圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/child-via-local-variable01.jpg "child-via-local-variable01圖解說明")
+
+### 父元件呼叫@ViewChild()
+
+本地變數方法是個簡單便利的方法。但是它也有侷限性，因為父元件-子元件的連線必須全部在父元件的範本中進行。父元件本身的程式碼對子元件沒有訪問權。
+
+如果父元件的類需要讀取子元件的屬性值或呼叫子元件的方法，就不能使用本地變數方法。
+
+當父元件類需要這種訪問時，可以把子元件作為 ViewChild，注入到父元件裡面。
+
+由本地變數切換到 ViewChild 技術的唯一目的就是做示範。
+
+![Viewchild圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/Viewchild01.jpg "Viewchild圖解說明")
