@@ -122,3 +122,5 @@ tslint.json檔案，關閉規則
 // lint:disable-next-line:no-input-rename
 @Input('appAvatarColor') name: string;
 ```
+
+![@input圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/input01.jpg "@input圖解說明")
