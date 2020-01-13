@@ -111,7 +111,7 @@ disabled 這個 attribute 是另一種特例。按鈕的 disabled 這個 propert
 
 ### @Input
 
-如果有出現 "the directive input property should not be renamed" 類似訊息時，可以用兩種方式讓這個訊息不提示。
+VScode如果有出現 "the directive input property should not be renamed" 類似訊息時，可以用兩種方式讓這個訊息不提示。
 
 ```input關閉錯誤提醒
 方法一：
@@ -123,4 +123,8 @@ tslint.json檔案，關閉規則
 @Input('appAvatarColor') name: string;
 ```
 
+下圖是官方範例節突出來畫畫線  
+
 ![@input圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/input01.jpg "@input圖解說明")
+
+
