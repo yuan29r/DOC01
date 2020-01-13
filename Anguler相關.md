@@ -127,4 +127,8 @@ tslint.json檔案，關閉規則
 
 ![@input圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/input01.jpg "@input圖解說明")
 
+## 透過 setter 截聽輸入屬性值的變化
 
+下圖是官方範例節突出來畫畫線  
+
+![setter圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/setter01.jpg "setter圖解說明")
