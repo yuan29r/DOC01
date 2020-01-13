@@ -136,5 +136,7 @@ tslint.json檔案，關閉規則
 ### 透過ngOnChanges()來截聽輸入屬性值的變化
 
 下圖是官方範例截圖出來畫畫線  
+當需要監視多個、互動式輸入屬性的時候，本方法比用屬性的 setter 更合適。
+監測輸入屬性 major 和 minor 的變化，並把這些變化編寫成日誌以報告這些變化。
 
 ![setter圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/ngOnChanges01.jpg "setter圖解說明")
