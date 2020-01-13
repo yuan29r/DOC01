@@ -140,3 +140,10 @@ tslint.json檔案，關閉規則
 監測輸入屬性 major 和 minor 的變化，並把這些變化編寫成日誌以報告這些變化。
 
 ![setter圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/ngOnChanges01.jpg "setter圖解說明")
+
+### 父元件監聽子元件的事件
+
+子元件暴露一個 EventEmitter 屬性，當事件發生時，子元件利用該屬性 emits(向上彈射)事件。父元件繫結到這個事件屬性，並在事件發生時作出迴應。
+子元件的 EventEmitter 屬性是一個輸出屬性，通常帶有@Output 裝飾器，就像在 VoterComponent 中看到的。
+
+![emit圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/emit01.jpg "emit圖解說明")
