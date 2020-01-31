@@ -177,3 +177,16 @@ tslint.json檔案，關閉規則
 MissionControlComponent 提供服務的例項，並將其共享給它的子元件(透過 providers 元資料陣列)，子元件可以透過建構函式將該例項注入到自身。
 
 ![service injectable圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/injectable01.jpg "service injectable圖解說明")
+
+
+### 透過 ngModel 追蹤修改狀態與有效性驗證
+
+在表單中使用 ngModel 可以獲得比僅使用雙向資料繫結更多的控制權。它還會告訴你很多資訊：使用者碰過此控制元件嗎？它的值變化了嗎？資料變得無效了嗎？
+
+NgModel 指令不僅僅追蹤狀態。它還使用特定的 Angular CSS 類來更新控制元件，以反映當前狀態。 可以利用這些 CSS 類來修改控制元件的外觀，顯示或隱藏訊息。
+
+| 狀態                 | 為真時的 CSS 類 (Class if true)    | 為假時的 CSS 類 (Class if false)        |
+| :------------------- | ------------------- |---------------|
+| 控制元件被訪問過。</br>The control has been visited.  | ng-touched | ng-untouched |
+| 控制元件的值變化了。</br>The control's value has changed.    | ng-dirty    | ng-pristine  |
+| 控制元件的值有效。</br>The control's value is valid.   | ng-valid         | ng-invalid    |
