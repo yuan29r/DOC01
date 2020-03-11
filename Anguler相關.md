@@ -49,7 +49,7 @@ ng serve --open 或 ng serve -o
 | 從檢視到資料來源的單向繫結</br>One-way from view target to data source | (target)="statement"</br>on-target="statement"                 | 事件 [Event] |
 | 雙向 </br>Two-way                  | [(target)]="expression"</br>bindon-target="expression"                  | 雙向 [Two-way]  |
 
-譯註：由於 HTML attribute 和 DOM property 在中文中都被翻譯成了“屬性”，無法區分。
+譯註：由於 HTML attribute 和 DOM property 在中文中都被翻譯成了"屬性"，無法區分。
 
 **除了插值之外的繫結型別，在等號左邊是目標名， 無論是包在括號中 ([]、()) 還是用字首形式 (bind-、on-、bindon-) 。**
 
@@ -66,9 +66,9 @@ attribute 是由 HTML 定義的。property 是由 DOM (Document Object Model) �
 
 最後一類尤其讓人困惑…… 除非你能理解這個普遍原則：  
 attribute 初始化 DOM property，然後它們的任務就完成了。property 的值可以改變；attribute 的值不能改變。  
-例如，當瀏覽器渲染 ```<input type="text" value="Bob">``` 時，它將建立相應 DOM 節點， 它的 value 這個 property 被初始化為 “Bob”。
+例如，當瀏覽器渲染 ```<input type="text" value="Bob">``` 時，它將建立相應 DOM 節點， 它的 value 這個 property 被初始化為 "Bob"。
 
-當用戶在輸入框中輸入 “Sally” 時，DOM 元素的 value 這個 property 變成了 “Sally”。 但是該 HTML 的 value 這個 attribute 保持不變。如果你讀取 input 元素的 attribute，就會發現確實沒變： input.getAttribute('value') // 返回 "Bob"。
+當用戶在輸入框中輸入 "Sally" 時，DOM 元素的 value 這個 property 變成了 "Sally"。 但是該 HTML 的 value 這個 attribute 保持不變。如果你讀取 input 元素的 attribute，就會發現確實沒變： input.getAttribute('value') // 返回 "Bob"。
 HTML 的 value 這個 attribute 指定了初始值；DOM 的 value 這個 property 是當前值。
 
 disabled 這個 attribute 是另一種特例。按鈕的 disabled 這個 property 是 false，因為預設情況下按鈕是可用的。 當你新增 disabled 這個 attribute 時，只要它出現了按鈕的 disabled 這個 property 就初始化為 true，於是按鈕就被禁用了。
@@ -177,7 +177,6 @@ tslint.json檔案，關閉規則
 MissionControlComponent 提供服務的例項，並將其共享給它的子元件(透過 providers 元資料陣列)，子元件可以透過建構函式將該例項注入到自身。
 
 ![service injectable圖解說明](https://github.com/yuan29r/DOC01/blob/master/ngPic/injectable01.jpg "service injectable圖解說明")
-
 
 ### 透過 ngModel 追蹤修改狀態與有效性驗證
 
