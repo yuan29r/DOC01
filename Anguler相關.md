@@ -189,3 +189,58 @@ NgModel 指令不僅僅追蹤狀態。它還使用特定的 Angular CSS 類來�
 | 控制元件被訪問過。</br>The control has been visited.  | ng-touched | ng-untouched |
 | 控制元件的值變化了。</br>The control's value has changed.    | ng-dirty    | ng-pristine  |
 | 控制元件的值有效。</br>The control's value is valid.   | ng-valid         | ng-invalid    |
+
+### 多專案實作
+
+建立一個沒有應用程式結構的專案
+
+```建立新專案
+**ng new ngDemoProjects --create-application=false --routing false --style css**
+```
+
+切換資料夾ngDemoProjects
+
+```切換資料夾
+**cd ngDemoProjects**
+```
+
+建立應用程式demo1 ( 建立應用程式時，專案預設會建立在 ./projects 目錄下！)
+
+```建立應用程式demo1
+**ng g application demo1 --routing**
+```
+
+建立 Angular Library 函式庫專案
+
+```建立函式庫專案
+**ng g library yuan-lib01 --prefix=yuan**
+```
+
+使用 npm run build 或 ng build 就會自動建置angular.json理預設=>"defaultProject": "demo1" ，因此預設會建置這個專案
+
+```建置這個專案
+ng build
+```
+
+如果還有其他專案想要建置可以這樣子寫 ng build demo2 或 ng build --project demo2
+
+```建置其他專案
+ng build yuan-lib01
+```
+
+專案根目錄下的 tsconfig.json 檔案，裡面有個 "paths" 區段設定，替 TypeScript 的編譯器指出 import 路徑的別名
+
+```tsconfig
+"paths": {
+      "yuan-lib01": [
+        "dist/yuan-lib01/yuan-lib01",
+        "dist/yuan-lib01"
+      ]
+    }
+```
+
+也就是說，在這個 monorepo 專案中，任何一個子專案都可以透過 yuan-lib01' 來 import 函式庫中的任何模組或服務元件：
+
+```import lib
+**import { YuanLib01Module } from 'yuan-lib01';**
+```
