@@ -197,7 +197,7 @@ NgModel 指令不僅僅追蹤狀態。它還使用特定的 Angular CSS 類來�
 ```建立新專案
 **ng new ngDemoProjects --create-application=false --routing false --style css**
 or
-**ng new my-workspace --createApplication="false"**(注意大小)
+**ng new ngDemoProjects --createApplication="false"**(注意大小)
 
 這兩個指令件出來的結果是一樣的
 ```
