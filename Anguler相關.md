@@ -39,6 +39,75 @@ cd 專案資料夾
 ng serve --open 或 ng serve -o
 ```  
 
+## 透過 Angular CLI 建立 Component
+
+可以使用 VSCode 下方的終端機 (按下 Ctrl + ` 開啟)，值得注意的是 Angular CLI Component 類型不只有一種，可以輸入以下指令查看它可以幫我們產生哪些 Component 範本：
+```CLI-help
+ng generate -h
+or
+ng g -h
+以上兩種，指令結果是一樣的
+```
+
+執行後可以得知它還能幫我們產生以下這些 Component 範本
+
+>Generates and/or modifies files based on a schematic.</br>
+>usage: ng generate <schematic> [options]</br>
+>- arguments:</br>
+>   - **schematic**</br>
+>    The schematic or collection:schematic to generate.</br>
+>   - **options:**</br>
+>     - _--defaults_</br>
+>    When true, disables interactive input prompts for options with a >default.</br>
+>     - _--dry-run (-d)_</br>
+>    When true, runs through and reports activity without writing out results.</br>
+>     - _--force (-f)_</br>
+>    When true, forces overwriting of existing files.</br>
+>     - _--help_</br>
+>    Shows a help message for this command in the console.</br>
+>     - _--interactive_</br>
+>    When false, disables interactive input prompts.</br>
+</br>
+>   - **Available Schematics:**</br>
+>     - Collection "@schematics/angular" (default):</br>
+>       - appShell</br>
+>       - application</br>
+>       - class</br>
+>       - component</br>
+>       - directive</br>
+>       - enum</br>
+>       - guard</br>
+>       - interceptor</br>
+>       - interface</br>
+>       - library</br>
+>       - module</br>
+>       - pipe</br>
+>       - service</br>
+>       - serviceWorker</br>
+>       - webWorker</br>
+
+如果要透過 Angular CLI 建立 Component ，並且把這個元件加到 AppComponent 下，以下指令擇一即可。
+
+```component
+完整指令
+ng generate component myFirstCompoent
+
+簡寫指令
+ng g c myFirstCompoent
+g:generate簡寫
+c:component簡寫
+```
+
+建立module and route，這些預先建立有好處，在module_name內容會註冊route模組，之後再建立component時，會自己把元件都註冊到module_name，所以建議可以先建立這個在建立元件。
+
+```一次建立module and route
+建立module and route
+ng g m module_name --routing=true
+g:generate簡寫
+m:module簡寫
+--routing=true 這是請他順便建立route檔
+```
+
 ## 繫結語法：概覽
 
 繫結的型別可以根據資料流的方向分成三類： 從資料來源到檢視、從檢視到資料來源以及雙向的從檢視到資料來源再到檢視。
@@ -190,7 +259,7 @@ NgModel 指令不僅僅追蹤狀態。它還使用特定的 Angular CSS 類來�
 | 控制元件的值變化了。</br>The control's value has changed.    | ng-dirty    | ng-pristine  |
 | 控制元件的值有效。</br>The control's value is valid.   | ng-valid         | ng-invalid    |
 
-### 多專案實作
+## 多專案實作
 
 建立一個沒有應用程式結構的專案
 
