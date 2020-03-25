@@ -317,3 +317,27 @@ ng build yuan-lib01
 ```import lib
 **import { YuanLib01Module } from 'yuan-lib01';**
 ```
+
+## cookie 套件
+
+[ngx-cookie-service安裝](https://www.npmjs.com/package/ngx-cookie-service)
+
+```ngx-cookie-service
+npm install ngx-cookie-service
+or
+npm i ngx-cookie-service
+```
+
+### 注意
+
+Angular 9 IVY Ready service for cookies. Originally based on the ng2-cookies library.
+
+For versions <9, please use 2.3.0 version of library.
+
+## moment and ngx-moment 套件安裝
+
+[moment日期時間套件](https://github.com/urish/ngx-moment)
+
+```moment安裝
+npm install --save moment ngx-moment
+```
