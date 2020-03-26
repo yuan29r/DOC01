@@ -108,6 +108,7 @@ m:module簡寫
 --routing=true 這是請他順便建立route檔
 ```
 
+
 ## 繫結語法：概覽
 
 繫結的型別可以根據資料流的方向分成三類： 從資料來源到檢視、從檢視到資料來源以及雙向的從檢視到資料來源再到檢視。
@@ -341,3 +342,6 @@ For versions <9, please use 2.3.0 version of library.
 ```moment安裝
 npm install --save moment ngx-moment
 ```
+
+使用時需要 import * as moment from 'moment';
+ngx-moment是基於moment上做延伸開發的，所以import需要注意moment也需要
