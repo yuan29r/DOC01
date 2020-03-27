@@ -25,6 +25,7 @@ ng new my-project-name
 ng build --prod
 ```
 
+
 這將產生您需要部署的文件。
 
 > 如果以上ng build命令引發有關缺少軟件包的錯誤，請將缺失的依賴項附加到本地項目的package.json文件中，以匹配下載的StackBlitz項目中的依賴項。
@@ -108,6 +109,9 @@ m:module簡寫
 --routing=true 這是請他順便建立route檔
 ```
 
+- route內容設定小提醒
+  - path:''  //代表當url為空的時候，則預設要開啟哪一個component。
+  - path:'**'  //代表當url的內容不再設定的路由內容當中，或是任意輸入的時候，則預設要開啟哪一個component。
 
 ## 繫結語法：概覽
 
