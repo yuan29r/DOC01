@@ -352,3 +352,219 @@ npm install --save moment ngx-moment
 
 使用時需要 import * as moment from 'moment';
 ngx-moment是基於moment上做延伸開發的，所以import需要注意moment也需要
+
+## CKEditor 5 安裝
+
+[CKEditor 官方文件教學](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/angular.html)
+
+```CKEditor 5
+安裝CK5
+npm install --save @ckeditor/ckeditor5-angular
+安裝設定配置
+npm install --save @ckeditor/ckeditor5-build-classic
+npm install --save @ckeditor/ckeditor5-build-decoupled-document
+```
+
+現在，添加CKEditorModule到其組件將使用<ckeditor>其模板中的組件的模塊。
+
+```CKEditorModule
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+@NgModule( {
+    imports: [
+        CKEditorModule,
+        // ...
+    ],
+    // ...
+} )
+```
+
+將編輯器版本導入到Angular組件中，並將其分配給一個public屬性，以使其可從模板訪問：
+
+```編輯器版本導入
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+@Component( {
+    // ...
+} )
+export class MyComponent {
+    public Editor = ClassicEditor;
+    // ...
+}
+```
+
+最後，使用ckeditor模板中的標記運行富文本格式編輯器：
+
+```開始用編輯器
+<ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+```
+### 支持的@Input屬性
+
+@InputAngular的CKEditor 5 RTF編輯器組件支持以下屬性：
+
+#### editor (required)
+
+The [Editor](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/basic-api.html) which provides the static [create()](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editor-Editor.html#static-function-create) method to create an instance of the editor:
+
+```editor
+<ckeditor [editor]="Editor"></ckeditor>
+```
+
+#### EditorConfig
+
+[EditorConfig 官方文件教學](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editorconfig-EditorConfig.html)
+
+```EditorConfig 範例
+<ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" ...></ckeditor>
+```
+
+#### data
+
+The initial data of the editor. It can be a static value:
+
+```ckeditor data
+<ckeditor data="<p>Hello, world!</p>" ...></ckeditor>
+```
+
+或共享父組件的屬性(shared parent component's property)
+
+```shared parent component's property
+@Component( {
+    // ...
+} )
+export class MyComponent {
+    public editorData = '<p>Hello, world!</p>';
+    // ...
+}
+```
+
+``` html
+<ckeditor [data]="editorData" ...></ckeditor>
+```
+
+#### tagName
+
+```指定tagName
+將在其上創建富文本編輯器的HTML元素的標籤名稱。
+默認標記為<div>。
+<ckeditor tagName="textarea" ...></ckeditor>
+```
+
+#### disabled
+
+控制編輯器的只讀狀態：
+
+
+```disabled
+@Component( {
+    // ...
+} )
+export class MyComponent {
+    public isDisabled = false;
+    // ...
+    toggleDisabled() {
+        this.isDisabled = !this.isDisabled
+    }
+}
+```
+
+``` disabled html:
+<ckeditor [disabled]="isDisabled" ...></ckeditor>
+
+<button (click)="toggleDisabled()">
+    {{ isDisabled ? 'Enable editor' : 'Disable editor' }}
+</button>
+```
+
+#### watchdog
+
+[ContextWatchdog](https://ckeditor.com/docs/ckeditor5/latest/api/module_watchdog_contextwatchdog-ContextWatchdog.html)該類的實例負責為多個編輯器實例提供相同的上下文，並在發生崩潰時重新啟動整個結構。
+
+```watchdog
+import CKSource from 'path/to/custom/build';
+
+const Context = CKSource.Context;
+const Editor = CKSource.Editor;
+const ContextWatchdog = CKSource.ContextWatchdog;
+
+@Component( {
+    // ...
+} )
+export class MyComponent {
+    public editor = Editor;
+    public watchdog: any;
+    public ready = false;
+
+    ngOnInit() {
+        const contextConfig = {};
+
+        this.watchdog = new ContextWatchdog( Context );
+
+        this.watchdog.create( contextConfig )
+            .then( () => {
+                this.ready = true;
+            } );
+    }
+}
+```
+
+```watchdog html
+<div *ngIf="ready">
+    <ckeditor [watchdog]="watchdog" ...></ckeditor>
+    <ckeditor [watchdog]="watchdog" ...></ckeditor>
+    <ckeditor [watchdog]="watchdog" ...></ckeditor>
+</div>
+```
+
+### 支持的@Output屬性
+
+@OutputAngular的CKEditor 5 RTF編輯器組件支持以下屬性：
+
+#### ready
+
+編輯器準備就緒時觸發。它與[editor#ready](https://ckeditor.com/docs/ckeditor5/latest/api/module_core_editor_editor-Editor.html#event-ready)事件相對應。
+它與編輯器實例一起觸發。
+
+請注意，可能多次調用此方法。除了初始化外，崩潰後重新啟動編輯器時也會調用它。不要在內部保留對編輯器實例的引用，因為在重新啟動的情況下它將更改。相反，您應該使用watchdog.editor屬性。
+
+#### change
+
+當編輯器的內容更改時觸發。它與[editor.model.document#change:data](https://ckeditor.com/docs/ckeditor5/latest/api/module_engine_model_document-Document.html#event-change:data)事件相對應。
+它使用包含編輯器和CKEditor 5 change:data事件對象的對象觸發。
+
+```change html
+<ckeditor [editor]="Editor" (change)="onChange($event)"></ckeditor>
+```
+
+```ChangeEvent
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
+
+@Component( {
+    // ...
+} )
+export class MyComponent {
+    public Editor = ClassicEditor;
+
+    public onChange( { editor }: ChangeEvent ) {
+        const data = editor.getData();
+
+        console.log( data );
+    }
+    ...
+}
+```
+
+#### blur
+
+當編輯器的編輯視圖模糊時觸發。它與[editor.editing.view.document#blur](https://ckeditor.com/docs/ckeditor5/latest/api/module_engine_view_document-Document.html#event-event:focus)事件相對應。
+它使用包含編輯器和CKEditor 5 blur事件數據的對象觸發。
+
+#### focus
+
+聚焦編輯器的編輯視圖時觸發。它與[editor.editing.view.document#focus](https://ckeditor.com/docs/ckeditor5/latest/api/module_engine_view_document-Document.html#event-event:focus)事件相對應。
+它使用包含編輯器和CKEditor 5 focus事件數據的對象觸發。
+
+#### error
+
+當編輯器崩潰時觸發（在編輯器初始化期間崩潰）。編輯器崩潰後，內部看門狗機制將重新啟動編輯器並觸發ready事件。
