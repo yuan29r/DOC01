@@ -595,7 +595,8 @@ ng g c doughnut-chart
 
 ### chartjs-plugin-datalabels 安裝
 
-[chartjs-plugin-datalabels](https://chartjs-plugin-datalabels.netlify.app/guide/getting-started.html#installation)
+
+[相關參考chartjs-plugin-datalabels官方說明](https://chartjs-plugin-datalabels.netlify.app/guide/getting-started.html#installation)
 
 ```chartjs-plugin-datalabels
 npm install chartjs-plugin-datalabels --save
