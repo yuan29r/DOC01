@@ -568,3 +568,33 @@ export class MyComponent {
 #### error
 
 當編輯器崩潰時觸發（在編輯器初始化期間崩潰）。編輯器崩潰後，內部看門狗機制將重新啟動編輯器並觸發ready事件。
+
+## Chart.js and ng2-charts 套件安裝
+
+Chart.js是一個流行的JavaScript圖表庫，ng2圖表是Angular 2 的包裝器，可以輕鬆地將Chart.js整合到Angular中。
+
+```ng2-charts charts.js
+npm install ng2-charts chart.js --save
+```
+
+[ng2-charts](https://valor-software.com/ng2-charts/#/GeneralInfo)
+
+charts example in Angular.
+
+ng g c bar-chart
+
+ng g c bubble-chart
+
+ng g c line-chart
+
+ng g c pie-chart
+
+ng g c radar-chart
+
+ng g c doughnut-chart
+
+### chartjs-plugin-datalabels 安裝
+
+```chartjs-plugin-datalabels
+npm install chartjs-plugin-datalabels --save
+```
